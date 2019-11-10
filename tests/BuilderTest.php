@@ -5,7 +5,7 @@ namespace Tests;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Query\Processors\Processor;
 use PDO;
-use Staudenmeir\EloquentEagerLimit\Builder;
+use Paxha\EloquentEagerLimit\Builder;
 
 class BuilderTest extends TestCase
 {

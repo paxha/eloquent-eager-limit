@@ -1,23 +1,24 @@
 <?php
 
-namespace Staudenmeir\EloquentEagerLimit;
+namespace Paxha\EloquentEagerLimit;
 
 use Illuminate\Database\Connection;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Grammars\Grammar;
 use RuntimeException;
-use Staudenmeir\EloquentEagerLimit\Grammars\MySqlGrammar;
-use Staudenmeir\EloquentEagerLimit\Grammars\PostgresGrammar;
-use Staudenmeir\EloquentEagerLimit\Grammars\SQLiteGrammar;
-use Staudenmeir\EloquentEagerLimit\Grammars\SqlServerGrammar;
-use Staudenmeir\EloquentEagerLimit\Relations\BelongsToMany;
-use Staudenmeir\EloquentEagerLimit\Relations\HasMany;
-use Staudenmeir\EloquentEagerLimit\Relations\HasManyThrough;
-use Staudenmeir\EloquentEagerLimit\Relations\HasOne;
-use Staudenmeir\EloquentEagerLimit\Relations\HasOneThrough;
-use Staudenmeir\EloquentEagerLimit\Relations\MorphMany;
-use Staudenmeir\EloquentEagerLimit\Relations\MorphOne;
-use Staudenmeir\EloquentEagerLimit\Relations\MorphToMany;
+use Paxha\EloquentEagerLimit\Grammars\MySqlGrammar;
+use Paxha\EloquentEagerLimit\Grammars\PostgresGrammar;
+use Paxha\EloquentEagerLimit\Grammars\SQLiteGrammar;
+use Paxha\EloquentEagerLimit\Grammars\SqlServerGrammar;
+use Paxha\EloquentEagerLimit\Relations\BelongsToMany;
+use Paxha\EloquentEagerLimit\Relations\HasMany;
+use Paxha\EloquentEagerLimit\Relations\HasManyThrough;
+use Paxha\EloquentEagerLimit\Relations\HasOne;
+use Paxha\EloquentEagerLimit\Relations\HasOneThrough;
+use Paxha\EloquentEagerLimit\Relations\MorphMany;
+use Paxha\EloquentEagerLimit\Relations\MorphOne;
+use Paxha\EloquentEagerLimit\Relations\MorphToMany;
 
 trait HasEagerLimit
 {
@@ -32,7 +33,7 @@ trait HasEagerLimit
 
         $grammar = $connection->withTablePrefix($this->getQueryGrammar($connection));
 
-        return new \Staudenmeir\EloquentEagerLimit\Builder(
+        return new \Paxha\EloquentEagerLimit\Builder(
             $connection, $grammar, $connection->getPostProcessor()
         );
     }
@@ -40,8 +41,8 @@ trait HasEagerLimit
     /**
      * Get the query grammar.
      *
-     * @param \Illuminate\Database\Connection $connection
-     * @return \Illuminate\Database\Query\Grammars\Grammar
+     * @param Connection $connection
+     * @return Grammar
      */
     protected function getQueryGrammar(Connection $connection)
     {
@@ -64,8 +65,8 @@ trait HasEagerLimit
     /**
      * Instantiate a new HasOne relationship.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Illuminate\Database\Eloquent\Model $parent
+     * @param Builder $query
+     * @param Model $parent
      * @param string $foreignKey
      * @param string $localKey
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -78,9 +79,9 @@ trait HasEagerLimit
     /**
      * Instantiate a new HasOneThrough relationship.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Illuminate\Database\Eloquent\Model $farParent
-     * @param \Illuminate\Database\Eloquent\Model $throughParent
+     * @param Builder $query
+     * @param Model $farParent
+     * @param Model $throughParent
      * @param string $firstKey
      * @param string $secondKey
      * @param string $localKey
@@ -95,8 +96,8 @@ trait HasEagerLimit
     /**
      * Instantiate a new MorphOne relationship.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Illuminate\Database\Eloquent\Model $parent
+     * @param Builder $query
+     * @param Model $parent
      * @param string $type
      * @param string $id
      * @param string $localKey
@@ -110,8 +111,8 @@ trait HasEagerLimit
     /**
      * Instantiate a new HasMany relationship.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Illuminate\Database\Eloquent\Model $parent
+     * @param Builder $query
+     * @param Model $parent
      * @param string $foreignKey
      * @param string $localKey
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -124,9 +125,9 @@ trait HasEagerLimit
     /**
      * Instantiate a new HasManyThrough relationship.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Illuminate\Database\Eloquent\Model $farParent
-     * @param \Illuminate\Database\Eloquent\Model $throughParent
+     * @param Builder $query
+     * @param Model $farParent
+     * @param Model $throughParent
      * @param string $firstKey
      * @param string $secondKey
      * @param string $localKey
@@ -141,8 +142,8 @@ trait HasEagerLimit
     /**
      * Instantiate a new MorphMany relationship.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Illuminate\Database\Eloquent\Model $parent
+     * @param Builder $query
+     * @param Model $parent
      * @param string $type
      * @param string $id
      * @param string $localKey
@@ -156,8 +157,8 @@ trait HasEagerLimit
     /**
      * Instantiate a new BelongsToMany relationship.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Illuminate\Database\Eloquent\Model $parent
+     * @param Builder $query
+     * @param Model $parent
      * @param string $table
      * @param string $foreignPivotKey
      * @param string $relatedPivotKey
@@ -175,8 +176,8 @@ trait HasEagerLimit
     /**
      * Instantiate a new MorphToMany relationship.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Illuminate\Database\Eloquent\Model $parent
+     * @param Builder $query
+     * @param Model $parent
      * @param string $name
      * @param string $table
      * @param string $foreignPivotKey

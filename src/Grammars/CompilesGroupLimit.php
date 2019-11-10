@@ -1,6 +1,6 @@
 <?php
 
-namespace Staudenmeir\EloquentEagerLimit\Grammars;
+namespace Paxha\EloquentEagerLimit\Grammars;
 
 use Illuminate\Database\Query\Builder;
 

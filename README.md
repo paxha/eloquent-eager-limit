@@ -21,7 +21,7 @@ Supports Laravel 5.5.29+.
  
 ## Installation
 
-    composer require staudenmeir/eloquent-eager-limit:"^1.0"
+    composer require paxha/eloquent-eager-limit
 
 ## Usage
 
@@ -30,7 +30,7 @@ Use the `HasEagerLimit` trait in both the parent and the related model and apply
 ```php
 class User extends Model
 {
-    use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
+    use \Paxha\EloquentEagerLimit\HasEagerLimit;
 
     public function posts()
     {
@@ -40,7 +40,7 @@ class User extends Model
 
 class Post extends Model
 {
-    use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
+    use \Paxha\EloquentEagerLimit\HasEagerLimit;
 }
 
 $users = User::with(['posts' => function ($query) {
@@ -53,7 +53,7 @@ Improve the performance of `HasOne`/`HasOneThrough`/`MorphOne` relationships by 
 ```php
 class User extends Model
 {
-    use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
+    use \Paxha\EloquentEagerLimit\HasEagerLimit;
 
     public function latestPost()
     {
@@ -63,7 +63,7 @@ class User extends Model
 
 class Post extends Model
 {
-    use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
+    use \Paxha\EloquentEagerLimit\HasEagerLimit;
 }
 
 $users = User::with('latestPost')->get();
@@ -74,7 +74,7 @@ You can also apply `offset()/skip()` to your relationship:
 ```php
 class User extends Model
 {
-    use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
+    use \Paxha\EloquentEagerLimit\HasEagerLimit;
 
     public function posts()
     {
@@ -84,7 +84,7 @@ class User extends Model
 
 class Post extends Model
 {
-    use \Staudenmeir\EloquentEagerLimit\HasEagerLimit;
+    use \Paxha\EloquentEagerLimit\HasEagerLimit;
 }
 
 $users = User::with(['posts' => function ($query) {

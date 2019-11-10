@@ -1,6 +1,6 @@
 <?php
 
-namespace Staudenmeir\EloquentEagerLimit\Relations;
+namespace Paxha\EloquentEagerLimit\Relations;
 
 trait HasLimit
 {

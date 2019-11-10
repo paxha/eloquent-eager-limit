@@ -1,6 +1,6 @@
 <?php
 
-namespace Staudenmeir\EloquentEagerLimit;
+namespace Paxha\EloquentEagerLimit;
 
 use Illuminate\Database\Query\Builder as Base;
 
